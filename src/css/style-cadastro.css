@@ -108,18 +108,33 @@ formulário
 }
 
 .home .box .titulo {
+    font-family:'Eingrantch Mono';
     color: #fff;
+    margin-bottom: 15px;
     font-weight: 500;
     text-align: center;
     letter-spacing: 0.1em;
 }
+
+/* Apenas um teste */
+
+.form-step {
+    display: none;
+}
+
+.form-step-active {
+    display: block;
+}
+
+/*Daqui pode continuar*/
+
 
 .home .box .formulario .inputBox {
     position: relative;
     font-family: 'Codygoon';
     font-size: 15px;
     width: 300px;
-    margin-top: 5px;
+    margin-top: 9px;
 }
 
 .home .box .formulario .inputBoxData {
@@ -237,6 +252,51 @@ formulário
     color: #fff;
 }
 
+.home .box .formulario .next-btn {
+    position: relative;
+    justify-self: center;
+    font-family: 'Milestone One';
+    font-size: 15px;
+    background: none;
+    border-radius: 5px;
+    color:#fff;
+    border: none;
+    cursor: pointer;
+    width: 100px;
+    height: auto;
+    margin-top: 40px;
+    transition: 0.5s;
+}
+
+.home .box .formulario .next-btn:hover {
+    background: #fff;
+    border: solid black 2px;
+    color: black;
+    transition: 0.5s;
+}
+
+.home .box .formulario .prev-btn {
+    position: relative;
+    font-size: 5px;
+    justify-self: center;
+    font-family: 'Milestone One';
+    font-size: 15px;
+    background: none;
+    border-radius: 5px;
+    color:#fff;
+    border: none;
+    cursor: pointer;
+    width: 100px;
+    margin-top: 90px;
+    transition: 0.5s;
+}
+
+.home .box .formulario .prev-btn:hover {
+    background: #fff;
+    border: solid black 2px;
+    color: black;
+    transition: 0.5s;
+}
 
 .home .box .formulario .links {
     display: flex;
@@ -274,8 +334,12 @@ formulário
 }
 
 .home .box .formulario .cadastrar {
+position:absolute;
 background: rgba(69, 69, 69, 0.381);
 cursor: pointer;
+width:18pc;
+margin-top: 2pc;
+justify-self: center;
 border:none;
 font-family: 'Codygoon';
 border-radius: 20px;
@@ -289,6 +353,58 @@ padding: 5px 0px 5px 0px;
     font-weight: bold;
     background: #fff;
     transition:  0.5s;   
+}
+
+.home .box .formulario .btns {
+justify-self: center;
+}
+
+.home .box .formulario .btns .login-btn {
+    position: relative;
+    font-size: 5px;
+    bottom: 1.11pc;
+    margin-left: 185px;
+    font-family: 'Milestone One';
+    font-size: 15px;
+    background: none;
+    border-radius: 5px;
+    color:#fff;
+    border: none;
+    cursor: pointer;
+    width: 100px;
+    transition: 0.5s;
+}
+
+.home .box .formulario .btns .login-btn:hover {
+    background: #fff;
+    border: solid black 2px;
+    color: black;
+    transition: 0.5s;
+
+}
+
+
+.home .box .formulario .btns .login-btn2 {
+    position: relative;
+    font-size: 5px;
+    margin-left: 85px;
+    font-family: 'Milestone One';
+    font-size: 15px;
+    background: none;
+    border-radius: 5px;
+    color:#fff;
+    border: none;
+    cursor: pointer;
+    width: 100px;
+    transition: 0.5s;
+}
+
+.home .box .formulario .btns .login-btn2:hover {
+    background: #fff;
+    border: solid black 2px;
+    color: black;
+    transition: 0.5s;
+
 }
 
 .roda-pe {
@@ -385,10 +501,6 @@ padding: 5px 0px 5px 0px;
 
 .roda-pe .social_media #facebook:hover {
     transform: scale(1.1);
-    /*
-    background: rgb(255, 255, 255);
-    background: linear-gradient(31deg, rgba(255, 255, 255, 1) 0%, rgba(98, 223, 255, 1) 23%, rgba(0, 172, 255, 1) 44%, rgba(47, 128, 255, 1) 74%, rgba(81, 91, 255, 1) 100%);
-    */
     background: rgb(64, 167, 255);
     background: linear-gradient(35deg, rgba(64, 167, 255, 1) 0%, rgba(0, 82, 255, 1) 100%);
 }
