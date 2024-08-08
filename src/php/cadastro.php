@@ -1,26 +1,17 @@
 <?php
-include('Class/ClassEstado.php');
-$objEstados = new ClassEstado();
+include_once('conexao.php'); 
+include('Class/ClassEstado');
+
+if(isset($_POST['submit'])) {
+$nome= $_POST['nome'];
+$dt_nasc= $_POST['dt_nasc'];
+$estado= $_POST['estado'];
+$cidade= $_POST['cidade'];
+$cpf= $_POST['cpf'];
+$email= $_POST['email'];
+$senha= $_POST['senha'];
+
+      $result = mysqli_query($conexao, "INSERT INTO usuario(nome,dt_nasc,estado_estado_id,cidade_id,cpf,email,senha) VALUES('$nome','$dt_nasc','$estado','$cidade','$cpf','$email','$senha')");
+}
+
 ?>
-      
-      <?php foreach ($objEstados->getEstados() as $estado) { ?>
-            <option value="<?php echo $estado->estado_id;  ?>"><?php echo $estado->nome_estado; ?></option>
-      <?php } 
-    
-
-    if(isset($_POST['submit'])) 
-    {
-        include_once('conexao.php');
-    $nome = $_POST['nome'];
-    $dt_nasc = $_POST['dt_nasc'];
-    $email = $_POST['email'];
-    $senha = $_POST['senha'];
-    $cpf = $_POST['cpf'];
-
-    $result = mysqli_query($conn, "INSERT INTO usuario(nome,dt_nasc,email,senha,cpf) VALUES($nome, $dt_nasc, $email, $senha, $cpf)");
-    }
-
-    //pegue o vídeo do formulário para completar
-
-    ?>
-    
