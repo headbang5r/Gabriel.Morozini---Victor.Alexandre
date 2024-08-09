@@ -246,8 +246,11 @@ formulário
 .home .box .formulario .inputBox .estado,
 .home .box .formulario .inputBox .cidade  {
     background: #87868656;
+    display: flex;
     border: none;
     border-radius: 50px;
+    width: 300px;
+    height: auto;
     font-family: 'Codygoon';
     color: #fff;
 }

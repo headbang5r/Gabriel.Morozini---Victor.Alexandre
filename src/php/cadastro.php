@@ -1,38 +1,32 @@
 <?php
-include_once('conexao.php'); 
+include('conexao.php');
 
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $nome = $_POST['nome'];
+    $email = $_POST['email'];
+    $senha = $_POST['senha'];
+    $cpf = $_POST['cpf'];
+    $estado = $_POST['estado'];
+    $cidade = $_POST['cidade'];
 
-$sql_code_states = "SELECT * FROM estado ORDER BY nome_estado ASC";
-$sql_query_states = $conn->query($sql_code_states) or die($conn->error);
+    // Validações básicas
+    if (!$nome || !$email || !$senha || !$cpf || !$estado || !$cidade) {
+        echo "Por favor, preencha todos os campos.";
+        exit;
+    }
 
-$estado= $GET['estado'];
+    // Prepara a instrução SQL para inserir o cadastro no banco de dados
+    $sql = "INSERT INTO usuarios (nome, email, senha, cpf, estado_id, cidade_id) VALUES (?, ?, ?, ?, ?, ?)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ssssii", $nome, $email, $senha, $cpf, $estado, $cidade);
 
-?>
-        <?php while($estado = $sql_query_states->fetch_assoc()) { ?> 
-<?php if(isset($_GET['estado']) && $_GET['estado'] == $estado['estado_id']) echo "selected"; ?> value="<?php echo $estado['estado_id']; ?>"><?php echo $estado['nome_estado']; ?></option>
-        <?php } ?>
-     <?php if(isset($_GET['estado'])) { ?>
-        <?php 
-        $selected_state = $conn->real_escape_string($GET['estado']);
-        
-        $sql_code_cities = "SELECT * FROM cidades WHERE estado_id = '$selected_state' ORDER BY nome_cidade";
-        $cidade= $GET['cidade'];
-        
-        $sql_query_cities = $conn->query($sql_code_cities) or die($conn->error);
-        while($cidade = $sql_query_cities->fetch_assoc()) { ?>
-        <?php echo $cidade['cidade_id']; ?>"><?php echo $cidade['nome_cidade']; ?></option>
-   
-        <?php } ?>
-        <?php } ?>
-<?php
-        if(isset($_POST['submit'])) {
-        $nome= $_POST['nome'];
-        $dt_nasc= $_POST['dt_nasc'];
-        $cpf= $_POST['cpf'];
-        $email= $_POST['email'];
-        $senha= $_POST['senha'];
+    if ($stmt->execute()) {
+        echo "Cadastro realizado com sucesso!";
+    } else {
+        echo "Erro ao realizar o cadastro: " . $stmt->error;
+    }
 
-      $result = mysqli_query($conn, "INSERT INTO usuario(nome, dt_nasc, estado_estado_id, cidade_id, cpf, email, senha) VALUES('$nome', '$dt_nasc', '$estado', '$cidade', '$cpf', '$email', '$senha')");
-
+    $stmt->close();
+    $conn->close();
 }
 ?>
