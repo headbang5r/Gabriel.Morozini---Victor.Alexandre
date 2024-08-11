@@ -8,7 +8,7 @@ function getUser() {
         .then(data => {
             const userList = document.getElementById('lista-usuario');
             userList.innerHTML = '';
-            data.forEach(carro => {
+            data.forEach(usuario => {
                 const userItem = document.createElement('div');
                 userItem.classList.add('user-item');
                 userItem.innerHTML = `
@@ -18,10 +18,10 @@ function getUser() {
                 <p><strong>Senha:</strong> ${user.senha}</p>
                 <p><strong>CPF:</strong> R$${user.cpf}</p>
                 <p><strong>Foto:</strong> R$${user.foto}</p>
-                <button class="btn delete-btn" onclick="deleteCar(${user.id})">Excluir</button>
-                <button class="btn edit-btn" onclick="editCar(${user.id})">Editar</button>
+                <button class="btn delete-btn" onclick="deleteUser(${user.id})">Excluir</button>
+                <button class="btn edit-btn" onclick="editUser(${user.id})">Editar</button>
             `;
-                carList.appendChild(userItem);
+                userList.appendChild(userItem);
             });
         });
 }
@@ -34,7 +34,7 @@ function createOrUpdate() {
     const fotoInput = document.getElementById('foto');
     const userIdInput = document.getElementById('user-id'); // Campo oculto para ID do carro
 
-    if (nomeInput && emailInput && senhaInput && cpfInput && fotoInput) {
+    if (nomeInput && emailInput && senhaInput && cpfInput) {
         const nome = nomeInput.value;
         const email = emailInput.value;
         const senha = senhaInput.value;
@@ -89,7 +89,7 @@ function deleteUser(id) {
 function editUser(id) {
     fetch('get_user.php?id=' + id)
         .then(response => response.json())
-        .then(car => {
+        .then(user => {
             const nomeInput = document.getElementById('nome');
             const emailInput = document.getElementById('email');
             const senhaInput = document.getElementById('senha');

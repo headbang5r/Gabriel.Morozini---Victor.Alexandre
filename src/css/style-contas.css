@@ -97,4 +97,9 @@
     font-family: 'Codygoon';
 }
 
-.home .container .area #carros-lista {}
+.home .container .area .tabela {
+    display: flex;
+    overflow: hidden;
+    width: 300px;
+    background: #fff;
+}

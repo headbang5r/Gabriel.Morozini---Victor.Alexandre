@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Prepara uma declaração SQL para atualizar um registro na tabela 'carros'
     $stmt = $conn->prepare("UPDATE usuario SET nome=?, email=?, senha=?, cpf=?, foto=? WHERE id=?");
     // Associa as variáveis aos parâmetros na declaração preparada
-    $stmt->bind_param("sssis", $nome, $email, $senha, $cpf, $foto, $id); // "ssssi" indica que os quatro primeiros parâmetros são strings e o último é um inteiro
+    $stmt->bind_param("sssisi", $nome, $email, $senha, $cpf, $foto, $id); // "ssssi" indica que os quatro primeiros parâmetros são strings e o último é um inteiro
 
     // Executa a declaração preparada e verifica se foi bem-sucedida
     if ($stmt->execute()) {
