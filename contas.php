@@ -11,6 +11,17 @@ $sql = "SELECT * FROM usuario ORDER BY id DESC";
 $result = $conn->query($sql);
 
 print_r($result);
+
+$id = $result; // Exemplo: ID do usuário que você quer recuperar a imagem
+$sql = "SELECT foto FROM usuario WHERE id = id";
+$stmt = $conn->prepare($sql);
+$stmt->execute();
+$stmt->bind_result($foto);
+$stmt->fetch();
+$stmt->close();
+$conn->close();
+
+// Se a imagem existir, exibi-la
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -96,9 +107,11 @@ print_r($result);
                         echo "<td>" . $user_data['email'] . "</td>";
                         echo "<td>" . $user_data['senha'] . "</td>";
                         echo "<td>" . $user_data['cpf'] . "</td>";
-                        <img src="exibir_imagem.php?id=1" alt="Imagem">
-                    }
-                    ?>
+                        $imgData = base64_encode($user_data['foto']);
+                        echo "<td><img src='data:image/png;base64,{$imgData}' alt='Foto' width='100'></td>";
+   
+                     } 
+                     ?>
             </div>
         </div>
         </section>
@@ -108,3 +121,4 @@ print_r($result);
     </footer>
     <script src="src/crud/contas.js"></script>
 </body>
+</html>
